@@ -63,13 +63,14 @@ class SingleHomeAndLockObserver {
     
     private func registerObserver() {
         // Lock Button
-        CFNotificationCenterAddObserver(
-            CFNotificationCenterGetDarwinNotifyCenter(),
-            Unmanaged.passUnretained(self).toOpaque(),
-            displayStatusChangedCallback,
-            "com.apple.springboard.lockcomplete" as CFString,
-            nil,
-            .deliverImmediately)
+        // Should never be used according to Apple guidelines
+//        CFNotificationCenterAddObserver(
+//            CFNotificationCenterGetDarwinNotifyCenter(),
+//            Unmanaged.passUnretained(self).toOpaque(),
+//            displayStatusChangedCallback,
+//            "com.apple.springboard.lockcomplete" as CFString,
+//            nil,
+//            .deliverImmediately)
         
         // Home Button
         notificationCenter.addObserver(
@@ -106,10 +107,11 @@ class SingleHomeAndLockObserver {
     }
     
     func displayStatusChanged(_ lockState: String) {
-        if lockState == "com.apple.springboard.lockcomplete" {
-            homeTask?.cancel()
-            lockListener?.onEvent()
-        }
+        // Should never be used according to Apple guidelines
+//        if lockState == "com.apple.springboard.lockcomplete" {
+//            homeTask?.cancel()
+//            lockListener?.onEvent()
+//        }
     }
     
     // Home Button Detection
